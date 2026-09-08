@@ -1,28 +1,29 @@
 <?php
 
-use BcMath\Number;
 
+/*function is_even_or_odd($num) {
+    if ($num % 2 === 0) {
+         return true;
+         }
+    else {
+        return false;
+      }
+*/
 
-function which_is_smaller($zahl1, $zahl2) {
-    return min($zahl1, $zahl2);
-}
+/*funktion
+if - num teilbar only durch 1 und durch $num; num nicht teilbar durch num-1 schleife*/
 
-$nummer = which_is_smaller(4, 2);
-
-var_dump($nummer);
-?> 
-
-//zweite option bsp____
-
-<?php
-function smaller($zahl1, $zahl2) {
-    if ($zahl1 < $zahl2) {
-        return $zahl1;
-    } else {
-        return $zahl2;
+function is_prime($num) {
+    for  ($i = $num - 1;
+        $i > 1;
+        $i -=1) 
+        { 
+        if ($num % $i === 0){
+         return false;
+         }
     }
+        return true;
 }
 
-print smaller(5, 3) . PHP_EOL;
-
+var_dump(is_prime (19))
     ?>
