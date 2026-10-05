@@ -1,20 +1,33 @@
 <?php
 
-require_once("lib.php");
+// =================
 
-// $arr = [5, 42, 17, 13, -5, 145, 13.56, 0.2, 12];
+// Fakultät einer Zahl
+// 5! = 120
+// 3!! = 3*2*1 = 6
 
-$potentialPalindromes = [
-    "Sit on a potato pan, Otis!",
-    "Ein Sachse mit Gazelle sagt im Regen nie.",
-    "Swap God for a janitor; rot in a jar of dog paws.",
-    "Anna hetzte Hanna.",
-    "Bananarama",
-    "Reib, Tim, eine Brandnarbe nie mit Bier!",
-    "Leg Raps ein, nie Spargel."
-];
 
-foreach ($potentialPalindromes as $p) {
-    print (is_palindrome($p) ? "✅ " : "❌ ") . $p . PHP_EOL;
+function factorial_loop($n) {
+    $result = 1;
+
+    if ($n < 1) {
+        return 0;
+    }
+    // Start mit 2 um die idempotente Berechnung „Multiplikation mit 1“ zu überspringen
+    for ($i=2; $i <= $n; $i++) { 
+        $result = $result * $i;
+    }
+
+    return $result;
 }
+
+function factorial_rec($num) {
+    if ($num <= 1) {
+        return 1;
+    }
+
+    return $num * factorial_rec($num-1);
+}
+
+
 ?>
