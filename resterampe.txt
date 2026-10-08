@@ -1,0 +1,104 @@
+  <!-- Kommentar in HTML-->
+        <script>
+        //     // Ab hier JavaScript-Code
+        //     let title = "Unsere tolle Web-Applikation"; // Variable
+        //     const num1 = 10; // Konstante
+        //     const num2 = 23;
+        //     // print, echo var_dump
+        //     // Wo sehen wir die Ausgabe von console.log?
+        //     console.log(title);   
+            
+            
+        //    // String-Konkatenation
+        //    let greeting = "Hello, ";
+        //    let name = "Susi";
+        //    console.log(greeting + name);
+
+        //     if (3 < 5) {
+        //         console.log("3 ist kleiner als 5");
+        //     }
+        //     else { 
+
+        //     }
+
+        //     for (let index = 0; index < 10; index++) {
+        //         console.log(index);
+        //     }
+        //     function add(a, b) {
+        //         return a + b;
+        //     }
+
+        //     function sub(a, b) {
+        //         return a-b;
+        //     }
+
+        //      const shoppingList = ["Milch, Eier, Gurke, Tomaten", true, 15, 3.5];
+
+        //     for (let index = 0; index < shoppingList.length; index++) {
+        //         const element = shoppingList[index];
+        //         console.log(element);
+                
+            // }
+
+// document.querySelector("h1").textContent = "Hallo Welt!"; direkt auf der website auf das document zugreifen und Möglichkeit zu ändern. 
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Session 08</h1>
+<style> #btn1 {background:rgb(85, 0, 255)}</style>
+
+
+    <div>
+        <p> Zählstand: </p>
+        <button id="btn1">0</button>
+    </div>
+
+  <script>
+    const btn = document.querySelector("#btn1");
+    console.log(btn);
+  </script>    
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Session 08</h1>
+<style> 
+
+</style>
+
+
+    <div>
+        <p> Zählstand: </p>
+        <button id="btn1">0</button>
+    </div>
+
+  <script>
+    const btn = document.querySelector("#btn1");
+    btn.textContent = "Cooler Button";
+
+    function whenButtonClicked() {
+        alert("Das ist schön!");
+    }
+    
+    btn.addEventListener (
+        "click",
+         whenButtonClicked
+    );
+
+  </script>    
+</body>
+</html>
