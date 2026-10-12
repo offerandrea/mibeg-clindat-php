@@ -1,4 +1,4 @@
-​<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -21,6 +21,9 @@
         }
         li:nth-child(2n+1) {
             background: #dedede;
+        }
+        li input {
+            margin-left: 1em;
         }
     </style>
 </head>
@@ -93,31 +96,51 @@
                 const DAY_IN_MS = 24 * 60 * 60 * 1000;
 
                 const currentDate = dateStartInMs + period * i * DAY_IN_MS;
-                const options = {
-                    day: "2-digit",
-                    month: "2-digit",
-                    year: "numeric"
-                };
 
                 // Erste Iteration der Schleife === Start-Datum
                 if (i === 0) {
-                    visits.push(new Date(currentDate).toLocaleDateString("de", options));
+                    visits.push({
+                        startDate: currentDate,
+                        endDate: currentDate
+                    });
                     continue;
                 }
 
                 const startDate = currentDate - timeWindow * DAY_IN_MS;
                 const endDate = currentDate + timeWindow * DAY_IN_MS;
 
-                visits.push(
-                    new Date(startDate).toLocaleDateString("de", options) +
-                    " – " +
-                    new Date(endDate).toLocaleDateString("de", options)
-                );
+                visits.push({
+                    startDate,
+                    endDate
+                });
             }
 
             // Ergebnisse in HTML darstellen:
             for (let i = 0; i < visits.length; i++) {
-                olVisits.insertAdjacentHTML("beforeend", "<li>" + visits[i] + "</li>");
+                let html;
+                const options = {
+                    day: "2-digit",
+                    month: "2-digit",
+                    year: "numeric"
+                };
+
+                if (i === 0) {
+                    html = "<li>" + new Date(visits[i].startDate).toLocaleString("de", options) + "</li>";
+                }
+                else {
+                    const startDateISO = new Date(visits[i].startDate).toISOString().substring(0, 10);
+                    const endDateISO = new Date(visits[i].endDate).toISOString().substring(0, 10);
+                    html = "<li>" +
+                        new Date(visits[i].startDate).toLocaleString("de", options) +
+                        " – " +
+                        new Date(visits[i].endDate).toLocaleString("de", options) +
+                        "<input type='date' min='" + startDateISO + "' max='" + endDateISO + "'></li>";
+                }
+
+                olVisits.insertAdjacentHTML(
+                    "beforeend",
+                    html
+                );
             }
 
             // Daten speichern
@@ -163,9 +186,7 @@
         );
         buttonPrint.addEventListener(
             "click",
-            () => {
-                print();
-            }
+            () => { print(); }
         );
 
         // Daten laden
