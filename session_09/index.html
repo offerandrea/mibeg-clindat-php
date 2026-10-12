@@ -80,6 +80,20 @@
             // Ergebnisse in HTML darstellen:
             for (let i = 0; i < visits.length; i++) {
                 olVisits.insertAdjacentHTML("beforeend", "<li>" + visits[i] + "</li>");
+
+                        // Daten speichern
+            // a. Daten als Objekt anlegen
+            const state = {
+                dateStart,
+                numVisits,
+                period,
+                timeWindow,
+                visits
+            };
+            // b. Datenobjekt in einen String konvertieren
+            const stateString = JSON.stringify(state);
+            // c. Datenstring in localStorage speichern
+            localStorage.setItem("visitenTermine", stateString);
             }
         }
 
